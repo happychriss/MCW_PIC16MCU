@@ -6,7 +6,7 @@
                     
 #define ROOM_LIGHT_ON 1
 #define ROOM_LIGHT_OFF 0
-#define ROOM_LIGHT_VALUE  60000 // values smaller than this - light is on
+#define ROOM_LIGHT_VALUE  65000 // values smaller than this - light is on
 #define ROOM_LIGHT_COUNT_ON 1 //how long light has to stay as it is to be seen as change
 #define ROOM_LIGHT_COUNT_OFF 6 //how long light has to stay as it is to be seen as change
 
@@ -119,6 +119,11 @@ void main() {
     LATAbits.LATA5 = 0b1; __delay_ms(1000); LATAbits.LATA5 = 0b0;
     TRISAbits.TRISA5 = 0b1; // RA1 = PWM2 register : PWM out, to dimm LED
 
+    // Say Hello
+    TRISAbits.TRISA5 = 0b0; // RA1 = PWM2 register : PWM out, to dimm LED
+    LATAbits.LATA5 = 0b1; __delay_ms(1000); LATAbits.LATA5 = 0b0;
+    TRISAbits.TRISA5 = 0b1; // RA1 = PWM2 register : PWM out, to dimm LED
+    
     unsigned int ldr; //LDR value for room 
     unsigned short room_light_delay = 0;
     unsigned short status_old = ROOM_LIGHT_ON, status_current = ROOM_LIGHT_ON;
